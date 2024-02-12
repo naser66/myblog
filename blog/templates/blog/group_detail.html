@@ -1,0 +1,51 @@
+{% extends '_base.html' %}
+{% block title %}
+    {{ post.title }}
+{% endblock title %}
+{% block style %}
+    .myDiv {
+    border: 5px outset black;
+    background-color: light;
+    text-align: left;
+    padding: 5px;
+    }
+    .myDiv2 {
+    border-bottom: 2px outset gray;
+    padding: 5px;
+    background-color: lightblue;
+    text-align: left;
+    }
+
+    .myDiv3 {
+    border-top: 1px outset gray;
+    background-color: lightgray;
+    text-align: left;
+    padding: 5px;
+    }
+{% endblock style %}
+{% block content %}
+    <div class="myDiv">
+        <div class="myDiv2">
+            {% for group in group_list %}
+                <li><a href="#">{{ group.title }}</a></li>
+
+
+
+
+
+                <div class="myDiv3">
+                Author: {{ post.author }} || Time: {{ post.datetime_created }}||
+                {% if user.is_authenticated %}
+                    {% if user ==  post.author %}
+                        <a href="{% url 'post_update' post.id %}" type="button" class="btn btn-success">Edit</a>
+                        <a href="{% url 'post_delete' post.id %}" type="button" class="btn btn-danger">Delete</a>
+                    {% endif %}
+
+                {% endif %}
+            {% endfor %}
+
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

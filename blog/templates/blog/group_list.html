@@ -1,0 +1,35 @@
+{% extends '_base.html' %}
+{% block title %}
+    group list
+{% endblock title %}
+{% block style %}
+    .myDiv {
+    border: 5px outset black;
+    background-color: light;
+    text-align: left;
+    padding: 5px;
+    }
+    .myDiv2 {
+    border-bottom: 2px outset gray;
+    padding: 5px;
+    background-color: lightblue;
+    text-align: left;
+    }
+
+    .myDiv3 {
+    border-top: 1px outset gray;
+    background-color: lightgray;
+    text-align: left;
+    padding: 5px;
+    }
+{% endblock style %}
+{% block content %}
+    <div class="myDiv">
+        <div class="myDiv2">
+            {% for group in group_list %}
+                <li><a href="#">{{ group.title }}</a></li>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock content %}
